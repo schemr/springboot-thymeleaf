@@ -1,0 +1,43 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-10-md">
+                <div class="page-header">
+                    <h1>게시판 목록</h1>
+                </div>
+            </div>
+            <div class="col-2-md pull-right"><a href="/board/new" class="btn btn-md btn-primary">등록</a></div>
+        </div>
+        <div class="row">
+            <table class="table table-stripped">
+                <thead>
+                    <th class="col-md-1">번호</th>
+                    <th class="col-md-5">제목</th>
+                    <th class="col-md-3">작성일시</th>
+                    <th class="col-md-3">수정일시</th>
+                </thead>
+                <tbody>
+                    <tr th:each="board : ${boardList}">
+                        <td th:text="${board.id}"></td>
+                        <td>
+                            <a th:href="'/board/' + ${board.id}" th:text="${board.title}"></a>
+                        </td>
+                        <td th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:ss')}"></td>
+                        <td th:text="${#temporals.format(board.updatedAt, 'yyyy-MM-dd HH:ss')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

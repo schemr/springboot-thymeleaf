@@ -1,0 +1,41 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>게시판</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-10-md">
+            <div class="page-header">
+                <h1>게시판 상세</h1>
+            </div>
+        </div>
+        <div class="col-2-md pull-right">
+            <a th:href="${board.id} + '/edit'" class="btn btn-md btn-primary">수정</a>
+            <a th:href="${board.id} + '/delete'" class="btn btn-md btn-danger">삭제</a>
+            <a href="/board/list" class="btn btn-md btn-info">목록</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12-md">
+            <div class="panel panel-primary">
+                <div class="panel-heading" th:text="${board.title}"></div>
+                <div class="panel-body" th:text="${board.content}">
+
+                </div>
+                <div class="panel-footer">
+                    <p th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd HH:ss')}"></p>
+                    <p th:text="${#temporals.format(board.updatedAt, 'yyyy-MM-dd HH:ss')}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
